@@ -46,4 +46,3 @@ int main()
 	tree = add(tree, 25);
 	traverse(tree);
 }
-//deneme123
