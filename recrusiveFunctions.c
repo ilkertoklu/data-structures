@@ -30,4 +30,3 @@ int main()
 	printf("%d\n", factorialCheck(5));
 	printf("%d\n", factorial(5));
 }
-
