@@ -9,7 +9,7 @@ struct node {
 };
 typedef struct node node;
 
-node* add(node* tree, int x)
+node* insert(node* tree, int x)
 {
 	if (tree == NULL) {
 		node* temp = (node*) malloc(sizeof(node));
@@ -20,29 +20,27 @@ node* add(node* tree, int x)
 	}
 
 	if (tree->data < x) {
-		tree->right = add(tree->right, x);
+		tree->right = insert(tree->right, x);
 		return tree;
 	}
-	tree->left = add(tree->left, x);
+	tree->left = insert(tree->left, x);
 	return tree;
 }
 
-void traverse(node* tree)
+void preOrder(node* tree)
 {
 	if (tree == NULL)
 		return;
-	traverse(tree->left);
-	printf("%d\n", tree->data);
-	traverse(tree->right);
+    preOrder(tree->left);
+    printf("%d ", tree->data);
+    preOrder(tree->right);
 }
 
 int main()
 {
 	node* tree = NULL;
-	tree = add(tree, 5);
-	tree = add(tree, 10);
-	tree = add(tree, 15);
-	tree = add(tree, 20);
-	tree = add(tree, 25);
-	traverse(tree);
+	for(int i = 0; i < 1001; i++)
+		tree = insert(tree, i);
+	preOrder(tree);
+	printf("\n");
 }
